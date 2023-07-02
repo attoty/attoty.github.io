@@ -43,28 +43,45 @@ def intro():
 
 
 def play_again():
-    choice = ''
+    choice = ""
     while choice not in ['y', 'n']:
         choice = input("Would you like to play again? (y/n)\n")
         if choice == 'n':
             print_sleep("Thanks for playing!", 2)
             quit()
         elif choice == 'y':
-            print_sleep("Great! Restarting the game", 2)
-            room1_visited = False
-            room2_visited = False
-            room3_visited = False
-            lever1 = ""
-            lever2 = ""
-            lever3 = ""
-            pass1 = str(random.randint(2, 9))
-            pass2 = str(random.randint(2, 9))
-            pass3 = str(random.randint(2, 9))
-            pass4 = str(random.randint(2, 9))
-            passcode = pass1 + pass2 + pass3 + pass4
-            sword = random.choice(["shiny", "rusty"])
-            intro()
-   
+            print_sleep("Great! Restarting the game", 2)  
+            reset()
+
+def reset():
+    global room1_visited
+    global room2_visited
+    global room3_visited
+    global lever1
+    global lever2
+    global lever3
+    global pass1
+    global pass2
+    global pass3
+    global pass4
+    global passcode
+    global sword
+    global score
+    room1_visited = False
+    room2_visited = False
+    room3_visited = False
+    lever1 = ""
+    lever2 = ""
+    lever3 = ""
+    pass1 = str(random.randint(2, 9))
+    pass2 = str(random.randint(2, 9))
+    pass3 = str(random.randint(2, 9))
+    pass4 = str(random.randint(2, 9))
+    passcode = pass1 + pass2 + pass3 + pass4
+    sword = random.choice(["shiny", "rusty"])
+    score = 0
+    intro()
+
 
 def hall():
     global sword
@@ -96,13 +113,12 @@ def hall():
                 hall()
             else:
                 room2()
-
+    
         elif room_choice == "3":
             if room3_visited:
                 hall2()
             else:
                 room3()
-    
 
 def room1():
     global lever1
@@ -152,7 +168,7 @@ def room2():
                 lever2 = 1
                 score +=  10
             elif levers_choice == "2":
-                print_sleep("you pull the second lever also nothing happens", 2)
+                print_sleep("you pull the second lever and nothing happens", 2)
                 lever3 = 1
                 score += 10
             if lever2 == 1 and lever3 ==1:
@@ -247,7 +263,7 @@ def boss():
             print_sleep("mommy health = " + str(mommy_health), 2)
     print_sleep("Nice attack!", 1)
     print_sleep("but you still have more to go", 2)
-    print_sleep("your score is " + score, 1)
+    print_sleep("your score is " + str(score), 1)
     print_sleep("Terror <1>", 1)
     print_sleep("Barrage <2>", 1)
     print_sleep("Fussilade <3>", 1)
@@ -279,29 +295,28 @@ def boss():
                 attack3 = input ("choose number of attack\n")
                 if attack3 == "1":
                     mommy_health -= 70
+                    score += 15
                     if mommy_health < 0:
                         mommy_health = 0
-                    score += 15
                     print_sleep("mommy health = " + str(mommy_health), 2)
                 elif attack3 == "2":
+                    score += 5
+                    mommy_health -= 55
                     if mommy_health < 0:
                         mommy_health = 0
-                    mommy_health -= 55
-                    score += 5
                     print_sleep("mommy health = " + str(mommy_health), 2)
                 elif attack3 == "3":
-                    if mommy_health < 0:
-                        mommy_health = 0
                     mommy_health -= 60
                     score += 10
+                    if mommy_health < 0:
+                        mommy_health = 0
                     print_sleep("mommy health = " + str(mommy_health), 2)
     print_sleep("you finally kill him", 1) 
     End()
 def End():
-    print_sleep("Using the key you have ", 1)
     print_sleep("You open the exit and escape", 2)
     print_sleep("your final score is " + str(score), 1)
     print_sleep("try again maybe you will get higher score", 1)
     play_again()
-    
+
 intro()
