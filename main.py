@@ -45,7 +45,7 @@ def intro():
 def play_again():
     choice = ''
     while choice not in ['y', 'n']:
-        choice = input("Would you like to play again? (y/n)")
+        choice = input("Would you like to play again? (y/n)\n")
         if choice == 'n':
             print_sleep("Thanks for playing!", 2)
             quit()
@@ -114,7 +114,7 @@ def room1():
     print_sleep(f"In the {pass1} night with {pass2} moons there is a secret", 2)
     lever1_choice = ""
     while lever1_choice not in ["y", "n"]:
-        lever1_choice = input("choose to open the lever or not (y/n)")
+        lever1_choice = input("choose to open the lever or not (y/n)\n")
     if lever1_choice == "y":
         print_sleep("You open the lever and nothing happens so you leave the room", 2)
         lever1 = 1
@@ -207,7 +207,7 @@ def hall2():
     print_sleep("type 2 to go back", 2)
     hall2_choice = ""
     while hall2_choice not in ["1", "2"]:
-        hall2_choice = input("what do you want to do?")
+        hall2_choice = input("what do you want to do?\n")
         if hall2_choice == "1":
             if sword == "rusty":
                 print_sleep("you swim and try to attack them with the rusty sword but fail and die", 2)
@@ -232,7 +232,7 @@ def boss():
     attack1 = ""
     mommy_health = 150
     while attack1 not in ["1", "2", "3"]:
-        attack1 = input ("choose number of attack")
+        attack1 = input ("choose number of attack\n")
         if attack1 == "1":
             mommy_health -= 70
             score += 25
@@ -253,7 +253,7 @@ def boss():
     print_sleep("Fussilade <3>", 1)
     attack2 = ""
     while attack2 not in ["1", "2", "3"]:
-        attack2 = input ("choose number of attack")
+        attack2 = input ("choose number of attack\n")
         if attack2 == "1":
             mommy_health -= 80
             score += 25
@@ -276,7 +276,7 @@ def boss():
             print_sleep("Ooze <3>", 1)
             attack3 = ""
             while attack3 not in ["1", "2", "3"]:
-                attack3 = input ("choose number of attack")
+                attack3 = input ("choose number of attack\n")
                 if attack3 == "1":
                     mommy_health -= 70
                     if mommy_health < 0:
