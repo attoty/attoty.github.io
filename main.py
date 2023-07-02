@@ -69,7 +69,7 @@ def play_again():
 def hall():
     global sword
     global score
-    print_sleep("your score is " + score, 1)
+    print_sleep("your score is " + str(score), 1)
     print_sleep("Choose where do you want to go", 2)
     print_sleep("room 1?", 1)
     print_sleep("room 2?", 1)
@@ -201,7 +201,7 @@ def room3():
 
 def hall2():
     global score
-    print_sleep("your score is " + score, 1)
+    print_sleep("your score is " + str(score), 1)
     print_sleep("Inside the room, you find a lake with crocodiles in it", 2)
     print_sleep("type 1 to swim in the lake", 2)
     print_sleep("type 2 to go back", 2)
@@ -221,7 +221,7 @@ def hall2():
 
 def boss():
     global score
-    print_sleep("your score is " + score, 1)
+    print_sleep("your score is " + str(score), 1)
     print_sleep("You continue and find a large door with the eye of horus on it", 2)
     print_sleep("You use the key on the door and it opens", 2)
     print_sleep("inside you find a mommy that is protecting the exit door", 2)
@@ -300,7 +300,7 @@ def boss():
 def End():
     print_sleep("Using the key you have ", 1)
     print_sleep("You open the exit and escape", 2)
-    print_sleep("your final score is " + score, 1)
+    print_sleep("your final score is " + str(score), 1)
     print_sleep("try again maybe you will get higher score", 1)
     play_again()
     
