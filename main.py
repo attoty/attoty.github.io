@@ -1,6 +1,7 @@
+#import statments
 import time
 import random
-
+#these are some variables needed in-game
 room1_visited = False
 room2_visited = False
 room3_visited = False
@@ -14,11 +15,11 @@ pass4 = str(random.randint(2, 9))
 passcode = pass1 + pass2 + pass3 + pass4
 sword = random.choice(["shiny", "rusty"])
 score = 0
-
+#This function creates a print statment with sleep time in it
 def print_sleep(text, wait_time):
     print(text)
     time.sleep(wait_time)
-
+#This function containes the description of the game
 def intro():
     print_sleep("Welcome to the ancient Egyptian world, where mysteries await "
                 "your discovery.", 2)
@@ -34,14 +35,13 @@ def intro():
     print_sleep("you find three rooms in front of you ", 2)
     print_sleep("in this game there is a scoring system", 1)
     print_sleep("as well as win and lose conditions", 1)
-    print_sleep("To start the game type in start", 1)
+    print_sleep("", 1)
     intro_answer = ""
     while intro_answer not in ["start"]:
-        intro_answer = input("What do you want to do?\n")
+        intro_answer = input("To start the game type in start\n")
         if intro_answer == "start":
             hall()
-
-
+#This function asks the player if he wants to play again
 def play_again():
     choice = ""
     while choice not in ['y', 'n']:
@@ -52,7 +52,7 @@ def play_again():
         elif choice == 'y':
             print_sleep("Great! Restarting the game", 2)  
             reset()
-
+#This function resets all values
 def reset():
     global room1_visited
     global room2_visited
@@ -81,8 +81,7 @@ def reset():
     sword = random.choice(["shiny", "rusty"])
     score = 0
     intro()
-
-
+#This function defines the main room in the game
 def hall():
     global sword
     global score
@@ -109,7 +108,7 @@ def hall():
                 room2()
                 
             elif lever2 == 1:
-                print_sleep("There is nothin to do there", 2)
+                print_sleep("There is nothing to do there", 2)
                 hall()
             else:
                 room2()
@@ -119,7 +118,7 @@ def hall():
                 hall2()
             else:
                 room3()
-
+#This function contains the story of room 1
 def room1():
     global lever1
     global room1_visited
@@ -139,8 +138,7 @@ def room1():
     elif lever1_choice == "n":
         print_sleep("You leave the room and go back to the hall", 2)
         hall()
-
-
+#This function contains the story of room 2
 def room2():
     global room2_visited
     global lever2
@@ -162,7 +160,7 @@ def room2():
         print_sleep("type 1 to pull the first lever", 2)
         print_sleep("type 2 to pull the second lever", 2)
         while True:
-            levers_choice = input("choose what do you want to do\n")
+            levers_choice = input("choose what do you want to do<1,2>\n")
             if levers_choice == "1":
                 print_sleep("you pull the first lever and nothing happens", 2)
                 lever2 = 1
@@ -180,8 +178,7 @@ def room2():
         print_sleep("you get confused but you take the key and go back to the hall", 2)
         room2_visited = True
         hall()
-
-
+#This function contains the story of room 3
 def room3():
     global room3_visited
     global score
@@ -194,7 +191,6 @@ def room3():
         print_sleep("HINT<papyrus and statue>", 2)
         trials = 3
         while True:
-            print(passcode)
             user_passcode = input("Type in the password: ")
             if user_passcode == passcode:
                 print_sleep("Correct password.", 2)
@@ -212,9 +208,9 @@ def room3():
         room3_visited = True
         hall2()
     else:
-        print_sleep("the room is  looked", 2)
+        print_sleep("the room is looked", 2)
         hall()
-
+#This function containes the lake part in the story
 def hall2():
     global score
     print_sleep("your score is " + str(score), 1)
@@ -223,7 +219,7 @@ def hall2():
     print_sleep("type 2 to go back", 2)
     hall2_choice = ""
     while hall2_choice not in ["1", "2"]:
-        hall2_choice = input("what do you want to do?\n")
+        hall2_choice = input("what do you want to do?<1,2>\n")
         if hall2_choice == "1":
             if sword == "rusty":
                 print_sleep("you swim and try to attack them with the rusty sword but fail and die", 2)
@@ -234,7 +230,7 @@ def hall2():
                 boss()
         elif hall2_choice == "2":
             hall()
-
+#This function contains the code of the boss fight
 def boss():
     global score
     print_sleep("your score is " + str(score), 1)
@@ -248,7 +244,7 @@ def boss():
     attack1 = ""
     mommy_health = 150
     while attack1 not in ["1", "2", "3"]:
-        attack1 = input ("choose number of attack\n")
+        attack1 = input ("choose number of attack<1,2,3>\n")
         if attack1 == "1":
             mommy_health -= 70
             score += 25
@@ -269,7 +265,7 @@ def boss():
     print_sleep("Fussilade <3>", 1)
     attack2 = ""
     while attack2 not in ["1", "2", "3"]:
-        attack2 = input ("choose number of attack\n")
+        attack2 = input ("choose number of attack<1,2,3>\n")
         if attack2 == "1":
             mommy_health -= 80
             score += 25
@@ -292,7 +288,7 @@ def boss():
             print_sleep("Ooze <3>", 1)
             attack3 = ""
             while attack3 not in ["1", "2", "3"]:
-                attack3 = input ("choose number of attack\n")
+                attack3 = input ("choose number of attack<1,2,3>\n")
                 if attack3 == "1":
                     mommy_health -= 70
                     score += 15
@@ -313,6 +309,7 @@ def boss():
                     print_sleep("mommy health = " + str(mommy_health), 2)
     print_sleep("you finally kill him", 1) 
     End()
+#This function ends the story
 def End():
     print_sleep("You open the exit and escape", 2)
     print_sleep("your final score is " + str(score), 1)
